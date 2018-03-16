@@ -25,4 +25,4 @@ The output is here.
 
 ## How do I get `tradeoff`?
 
-You can get the code for the package here at my GitHub or download the pre-released package (0.1.0) as a tarball zip file at my personal website, <http://www.philipdwaggoner.com/>. This package is a work in progress.
+You can get the code for the package here at my GitHub (soon) or download the pre-released package (0.1.0) as a tarball zip file at my personal website, <http://www.philipdwaggoner.com/> (soon). This measure/package is a work in progress.
