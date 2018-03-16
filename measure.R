@@ -1,3 +1,4 @@
+# This measure is in a paper currently _Under Review_. Please be sure to let me know if you want to use or work with this. Also, any ideas on making it better are always welcomed!
 # Here is a preliminary, pre-cleaned, rough version of the measure (more categorization and cleaning to come).
 # New to upload data set (here, "dta") with units as items selected by actors (e.g., individual bills sponsored by MCs)
 
