@@ -16,12 +16,15 @@ Tot.NP.Topics <- sum(dta$Topic==0) # NP
 MCs <- sort(unique(dta$icpsr)) # can be any unique identifier ("icpsr" here as an example using members of congress (MCs) as actors)
 Ind.P <- numeric(length(MCs))
 Ind.NP <- numeric(length(MCs))
+cong <- sort(unique(dta$congress)) # Unique congress in which actor is acting
 
-#Step 3: Loop over actors and total things up, given smaller units of analysis as individual choices by actors
-for(i in 1:length(MCs)){
-      xdta <- dta[which(dta$icpsr==MCs[i]),]
-      Ind.P[i] <- sum(xdta$Topic==1)/Tot.P.Topics
-      Ind.NP[i] <- sum(xdta$Topic==0)/Tot.NP.Topics 
+#Step 3: Loop over actors and total things up for actor, i, acting within congress, j, given smaller units of analysis as individual choices by actors
+for (j in 1:length(cong){
+      for(i in 1:length(MCs)){
+            xdta <- dta[which(dta$icpsr==MCs[i,j]),]
+            Ind.P[i,j] <- sum(xdta$Topic==1)/Tot.P.Topics
+            Ind.NP[i,j] <- sum(xdta$Topic==0)/Tot.NP.Topics 
+      }
 }
 
 #Step 4: Combine new indicators into single data frame
