@@ -16,7 +16,7 @@ Tot.NP.Topics <- sum(dta$Topic==0) # NP
 MCs <- sort(unique(dta$icpsr)) # can be any unique identifier ("icpsr" here as an example using members of congress (MCs) as actors)
 Ind.P <- numeric(length(MCs))
 Ind.NP <- numeric(length(MCs))
-cong <- sort(unique(dta$congress)) # Unique congress in which actor is acting
+cong <- sort(unique(dta$congress)) # Unique congress in which legislator/MC is acting
 
 #Step 3: Loop over actors and total things up for actor, i, acting within congress, j, given smaller units of analysis as individual choices by actors
 for (j in 1:length(cong){
