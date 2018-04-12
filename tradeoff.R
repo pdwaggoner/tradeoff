@@ -19,14 +19,27 @@ Ind.NP <- numeric(length(MCs))
 cong <- sort(unique(dta$congress)) # Unique congress in which legislator/MC is acting
 
 #Step 3: Loop over actors and total things up for actor, i, acting within congress, j, given smaller units of analysis as individual choices by actors
-for (j in 1:length(cong){
-      for(i in 1:length(MCs)){
-            xdta <- dta[which(dta$icpsr==MCs[i,j]),]
-            Ind.P[i,j] <- sum(xdta$Topic==1)/Tot.P.Topics
-            Ind.NP[i,j] <- sum(xdta$Topic==0)/Tot.NP.Topics 
-      }
+tradeoff <- function(dta, i, c){ # df, icpsr, congress
+      dta <- dta # old
+      MCs <- sort(unique(dta$icpsr)) # can be any unique identifier ("icpsr" here as an example using members of congress (MCs) as actors)
+      Ind.P <- numeric(length(MCs))
+      Ind.NP <- numeric(length(MCs))
+      cong <- sort(unique(dta$congress)) # Unique congress in which legislator/MC is acting
+
+      for (j in 1:length(cong){
+            for(i in 1:length(MCs)){
+                  xdta <- dta[which(dta$icpsr==MCs[i,j]),]
+                  Ind.P[i,j] <- sum(xdta$Topic==1)/Tot.P.Topics
+                  Ind.NP[i,j] <- sum(xdta$Topic==0)/Tot.NP.Topics 
+                  }
+            }
+            #New.dta <- data.frame(MCs, Ind.P, Ind.NP)
+            tradeoff[i,j] <- (Ind.P[i,j] - Ind.NP[i,j])
+      return(tradeoff)
 }
 
+
+     # OR...
 #Step 4: Combine new indicators into single data frame
 New.dta <- data.frame(MCs, Ind.P, Ind.NP)
 
