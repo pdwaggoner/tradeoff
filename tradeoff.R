@@ -5,22 +5,14 @@
 # Need to upload data set (here, "dta") with units as items selected by actors (e.g., individual bills sponsored by MCs), 
 # Then with "topic" as the category of interest, where 1= the value pursued, and 0= the value not pursued, the standardized difference of which is the tradeoff.
 
-# Load arm for standardization below
+# Load arm for standardization
 library(arm)
 
-#Step 1: Total up the number of Priority (P) topics and Non-Priority (NP) topics; this determines the tradeoff being made by the actor (e.g., district vs. non-district; owned vs. trespassed; black vs. red)
-Tot.P.Topics <- sum(dta$Topic==1) # P
-Tot.NP.Topics <- sum(dta$Topic==0) # NP
-
-#Step 2: Create a list of individual actors and a few places to store things
-MCs <- sort(unique(dta$icpsr)) # can be any unique identifier ("icpsr" here as an example using members of congress (MCs) as actors)
-Ind.P <- numeric(length(MCs))
-Ind.NP <- numeric(length(MCs))
-cong <- sort(unique(dta$congress)) # Unique congress in which legislator/MC is acting
-
-#Step 3: Loop over actors and total things up for actor, i, acting within congress, j, given smaller units of analysis as individual choices by actors
-tradeoff <- function(dta, i, c){ # df, icpsr, congress
-      dta <- dta # old
+# Working function for all in single step: Basic intuition is to loop over actors and total things up for actor, i, acting within congress, j, given smaller units of analysis as individual choices by actors
+tradeoff <- function(dta){ # df to manipulate and creat objects within function; likely work with roxygen "usage" at a later point (i.e., consider each vector as a parameter)
+      dta <- dta # old df
+      Tot.P.Topics <- sum(dta$Topic==1) # P
+      Tot.NP.Topics <- sum(dta$Topic==0) # NP
       MCs <- sort(unique(dta$icpsr)) # can be any unique identifier ("icpsr" here as an example using members of congress (MCs) as actors)
       Ind.P <- numeric(length(MCs))
       Ind.NP <- numeric(length(MCs))
@@ -39,7 +31,35 @@ tradeoff <- function(dta, i, c){ # df, icpsr, congress
 }
 
 
-     # OR...
+
+# Combine new indicators into single data frame
+New.dta <- data.frame(MCs, tradeoff)
+hist(New.dta$tradeoff) # Check distribution of tradeoff scores
+
+# Standardize tradeoff scores by centering on 0, then dividing by 2 standard deviations (Gelman 2008) - from "arm" package
+New.dta$tradeoff.std <- rescale(New.dta$tradeoff) # Rescales to put points on a -x to +x scale
+hist(New.dta$tradeoff.std) # Should be centered over 0 now
+summary(New.dta$tradeoff.std) # Check for min and max, and other descriptives
+
+           
+## OR proceed by individual steps (old method)
+#Step 1: Total up the number of Priority (P) topics and Non-Priority (NP) topics; this determines the tradeoff being made by the actor (e.g., district vs. non-district; owned vs. trespassed; black vs. red)
+Tot.P.Topics <- sum(dta$Topic==1) # P
+Tot.NP.Topics <- sum(dta$Topic==0) # NP
+
+#Step 2: Create a list of individual actors and a few places to store things
+MCs <- sort(unique(dta$icpsr)) # can be any unique identifier ("icpsr" here as an example using members of congress (MCs) as actors)
+Ind.P <- numeric(length(MCs))
+Ind.NP <- numeric(length(MCs))
+#cong <- sort(unique(dta$congress)) # Unique congress in which legislator/MC is acting
+
+#Step 3: Loop over actors and total things up for actor, i, acting within congress, j, given smaller units of analysis as individual choices by actors
+for(i in 1:length(MCs)){
+      xdta <- dta[which(dta$icpsr==MCs[i]),]
+      Ind.P[i] <- sum(xdta$Topic==1)/Tot.P.Topics
+      Ind.NP[i] <- sum(xdta$Topic==0)/Tot.NP.Topics 
+}
+
 #Step 4: Combine new indicators into single data frame
 New.dta <- data.frame(MCs, Ind.P, Ind.NP)
 
