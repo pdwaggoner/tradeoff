@@ -1,14 +1,14 @@
 # `tradeoff`: Calculating tradeoffs in decision-making based on aggregate behavior
 
-## This measure is introduced and validated in a paper currently _Under Review_. Please be sure to let me know if you want to use or work with this. Also, any ideas on making it better are always welcomed!
+## This measure is introduced and validated in a paper currently _Under Review_. Please be sure to let me know if you want to use or work with this. Any ideas on making it better are always welcomed.
 
 ## Why should I use `tradeoff`?
 
-First some background. Then, what does the package do in an intuitive sense?
+First some background. Then, what does the package do intuitively?
 
 ## How do I use `tradeoff`?
 
-The idea behind this package... To see how this works, consider a few examples.
+The idea behind this package. To see how this works, consider a few examples.
 
 ###### First, load the package and run the library
 
