@@ -1,6 +1,6 @@
 # This measure is in a paper currently Under Review. Please be sure to let me know if you want to use or work with this.
 
-# Here is a preliminary, pre-cleaned, rough version of the measure (more categorization and cleaning to come).
+# Here is a *very* preliminary, pre-cleaned, rough version of the measure (more categorization and cleaning to come).
 
 # Need to upload data set (here, "dta") with units as items selected by actors (e.g., individual bills sponsored by MCs), 
 # Then with "topic" as the category of interest, where 1= the value pursued, and 0= the value not pursued, the standardized difference of which is the tradeoff.
