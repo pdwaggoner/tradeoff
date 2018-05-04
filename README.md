@@ -27,4 +27,4 @@ The output is here.
 
 ## How do I get `tradeoff`?
 
-You can get the code for the package here at my GitHub Repo (soon). This measure/package is a \[very much a\] work in progress.
+You can get the code for the package here at my GitHub Repo (soon). This measure/package is \[very much\] a work in progress.
