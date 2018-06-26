@@ -73,5 +73,6 @@ hist(New.dta$tradeoff) # Check distribution of tradeoff scores
 #Step 6: Standardize tradeoff scores by centering on 0, then dividing by 2 standard deviations (Gelman 2008) - from "arm" package
 New.dta$tradeoff.std <- rescale(New.dta$tradeoff) # Rescales to put points on a -x to +x scale
 
-hist(New.dta$tradeoff.std) # Should be centered over 0 now
-summary(New.dta$tradeoff.std) # Check for min and max, and other descriptives
+# Basic diagnostics
+#hist(New.dta$tradeoff.std) # Should be centered over 0 now
+#summary(New.dta$tradeoff.std) # Check for min and max, and other descriptives
