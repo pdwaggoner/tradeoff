@@ -5,7 +5,7 @@
 # Need to upload data set (here, "dta") with units as items selected by actors (e.g., individual bills sponsored by MCs), 
 # Then with "topic" as the category of interest, where 1= the value pursued, and 0= the value not pursued, the standardized difference of which is the tradeoff.
 
-# Load arm for standardization
+# Load for standardization later (depends)
 library(arm)
 
 # Consider loading dta externally: read.csv(file.choose()), depending where wd set
