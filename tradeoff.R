@@ -32,8 +32,6 @@ tradeoff <- function(dta){ # df to manipulate and creat objects within function;
       return(tradeoff)
 }
 
-
-
 # Combine new indicators into single data frame
 New.dta <- data.frame(MCs, tradeoff)
 hist(New.dta$tradeoff) # Check distribution of tradeoff scores
