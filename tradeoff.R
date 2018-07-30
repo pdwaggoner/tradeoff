@@ -15,7 +15,7 @@ tradeoff <- function(dta){ # df to manipulate and creat objects within function;
       dta <- dta # old df
       Tot.P.Topics <- sum(dta$Topic==1) # P
       Tot.NP.Topics <- sum(dta$Topic==0) # NP
-      MCs <- sort(unique(dta$icpsr)) # can be any unique identifier ("icpsr" here as an example using members of congress (MCs) as actors)
+      MCs <- sort(unique(dta$icpsr)) # can be any unique identifier ("icpsr" here as an example using MCs as actors)
       Ind.P <- numeric(length(MCs))
       Ind.NP <- numeric(length(MCs))
       cong <- sort(unique(dta$congress)) # Unique congress in which legislator/MC is acting
