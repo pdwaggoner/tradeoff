@@ -3,7 +3,8 @@
 # Here is a *very* preliminary, pre-cleaned version of the measure (more categorization and cleaning shortly).
 
 # Need to upload data set (here, "dta") with units as items selected by actors (e.g., individual bills sponsored by MCs), 
-# Then with "topic" as the category of interest, where 1= the value pursued, and 0= the value not pursued, the standardized difference which captures the tradeoff.
+# Then with "topic" as the category of interest, where 1= the value pursued and 0= the value not pursued
+# The standardized difference captures the tradeoff.
 
 # Load for standardization later (depends)
 library(arm)
