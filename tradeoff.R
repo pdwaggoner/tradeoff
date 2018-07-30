@@ -10,7 +10,7 @@ library(arm)
 
 # Consider loading data externally: read.csv(file.choose()), depending where wd set
 
-# Working function for all in single step: Basic intuition is to loop over actors and total things up for actor, i, acting within congress, j, given smaller units of analysis as individual choices by actors
+# Working function for single step: Basic intuition is to loop over actors and total things up for actor, i, acting within congress, j, given smaller units of analysis as individual choices by actors
 tradeoff <- function(dta){ # df to manipulate and creat objects within function; likely work with roxygen "usage" at a later point (i.e., consider each vector as a parameter)
       dta <- dta # old df
       Tot.P.Topics <- sum(dta$Topic==1) # P
