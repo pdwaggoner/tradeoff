@@ -4,7 +4,7 @@
 
 ## Why should I use `tradeoff`?
 
-First some background. Then, what does the package do intuitively?
+First, background. Then, what does the package do intuitively?
 
 ## How do I use `tradeoff`?
 
